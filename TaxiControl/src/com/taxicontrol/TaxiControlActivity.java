@@ -32,7 +32,6 @@ public class TaxiControlActivity extends Activity {
         button.setOnClickListener(listener);
         editText.setOnKeyListener(listener);
         
-        
     }
     
     
