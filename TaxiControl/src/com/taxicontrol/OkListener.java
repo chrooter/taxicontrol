@@ -14,8 +14,6 @@ public class OkListener implements OnClickListener, OnKeyListener {
 	Context context;
 	TextView textView;
 	EditText editText;
-	int constantUnits;
-	int minimalUnits;
 	
 	public void onClick(View v) {
 		String text = editText.getText().toString();
@@ -46,6 +44,7 @@ public class OkListener implements OnClickListener, OnKeyListener {
 			}
 			//multiplica las unidades por el valor por unidad
 			long result = units*Constants.pesosPorUnidad;
+			result = Math.round(result/100.0)*100;
 			return Long.toString(result);
 		} catch (NumberFormatException e) {
 			return "Entrada Invalida";
@@ -76,5 +75,4 @@ public class OkListener implements OnClickListener, OnKeyListener {
 	public void setEditText(EditText editText) {
 		this.editText = editText;
 	}
-
 }
