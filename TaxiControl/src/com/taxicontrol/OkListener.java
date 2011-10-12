@@ -1,4 +1,7 @@
 package com.taxicontrol;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 import android.content.Context;
 import android.view.KeyEvent;
 import android.view.View;
@@ -29,7 +32,20 @@ public class OkListener implements OnClickListener, OnKeyListener {
 	
 	public String operateUnits(String value) {
 		try {
-			long result = Long.parseLong(value)*Constants.pesosPorUnidad;
+			long units = Long.parseLong(value);
+			//si es menor a 50 cobrar carrera minima
+			if (units < 50) {
+				units = 50;
+			}
+			//si es nocturno o festivo agregar las unidades por recargo nocturno o festivo
+			Calendar ahora = new GregorianCalendar();
+			int hora = ahora.get(Calendar.HOUR_OF_DAY);
+			int dia = ahora.get(Calendar.DAY_OF_WEEK);
+			if (hora > 20 || hora < 5 || dia == Calendar.SUNDAY) {
+				units += Constants.recargoNocturnoFestivo;
+			}
+			//multiplica las unidades por el valor por unidad
+			long result = units*Constants.pesosPorUnidad;
 			return Long.toString(result);
 		} catch (NumberFormatException e) {
 			return "Entrada Invalida";
