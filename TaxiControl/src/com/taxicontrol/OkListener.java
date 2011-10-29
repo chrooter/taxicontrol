@@ -7,13 +7,19 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnKeyListener;
+import android.view.View.OnTouchListener;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class OkListener implements OnClickListener, OnKeyListener {
+public class OkListener implements OnClickListener, OnKeyListener, OnCheckedChangeListener {
 	Context context;
 	TextView textView;
 	EditText editText;
+	CheckBox festivo;
+	CheckBox aeropuerto;
 	
 	public void onClick(View v) {
 		String text = editText.getText().toString();
@@ -28,6 +34,13 @@ public class OkListener implements OnClickListener, OnKeyListener {
 		return false;
 	}
 	
+
+	public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
+		String text = editText.getText().toString();
+		String unitsOperated = operateUnits(text);
+		textView.setText(unitsOperated);
+	}
+	
 	public String operateUnits(String value) {
 		try {
 			long units = Long.parseLong(value);
@@ -39,8 +52,11 @@ public class OkListener implements OnClickListener, OnKeyListener {
 			Calendar ahora = new GregorianCalendar();
 			int hora = ahora.get(Calendar.HOUR_OF_DAY);
 			int dia = ahora.get(Calendar.DAY_OF_WEEK);
-			if (hora > 20 || hora < 5 || dia == Calendar.SUNDAY) {
+			if (hora >= 20 || hora < 5 || dia == Calendar.SUNDAY || festivo.isChecked()) {
 				units += Constants.recargoNocturnoFestivo;
+			}
+			if (aeropuerto.isChecked()) {
+				units += Constants.recargoPuenteAereo;
 			}
 			//multiplica las unidades por el valor por unidad
 			long result = units*Constants.pesosPorUnidad;
@@ -51,6 +67,7 @@ public class OkListener implements OnClickListener, OnKeyListener {
 		}
 		
 	}
+	
 	
 	public Context getContext() {
 		return context;
@@ -75,4 +92,14 @@ public class OkListener implements OnClickListener, OnKeyListener {
 	public void setEditText(EditText editText) {
 		this.editText = editText;
 	}
+	
+	public void setFestivo(CheckBox festivo) {
+		this.festivo = festivo;
+	}
+	
+	public void setAeropuerto(CheckBox aeropuerto) {
+		this.aeropuerto = aeropuerto;
+	}
+
+	
 }
