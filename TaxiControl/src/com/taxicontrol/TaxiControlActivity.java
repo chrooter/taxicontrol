@@ -3,13 +3,17 @@ package com.taxicontrol;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.google.ads.*;
 
 public class TaxiControlActivity extends Activity {
-	
+	private AdView adView;
 	Context context = TaxiControlActivity.this;
 	
 	
@@ -24,7 +28,19 @@ public class TaxiControlActivity extends Activity {
         final EditText editText = (EditText)findViewById(R.id.entry);
         final CheckBox festivo = (CheckBox)findViewById(R.id.festivo);
         final CheckBox aeropuerto = (CheckBox)findViewById(R.id.aeropuerto);
-        		
+        
+        //ad
+        adView = new AdView(this, AdSize.BANNER, "a14eaeb3d03c19a");
+        
+        RelativeLayout layout = (RelativeLayout)findViewById(R.id.mainLayout);
+        RelativeLayout.LayoutParams p = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT);
+        p.addRule(RelativeLayout.BELOW, R.id.result);
+        adView.setLayoutParams(p);
+        layout.addView(adView,p);
+        AdRequest request = new AdRequest();
+//        request.setTesting(true);
+        adView.loadAd(request);    
         //create listener
         OkListener listener = new OkListener();
         listener.setTextView(textView);
