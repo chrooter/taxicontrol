@@ -35,7 +35,7 @@ public class TaxiControlActivity extends Activity {
         RelativeLayout layout = (RelativeLayout)findViewById(R.id.mainLayout);
         RelativeLayout.LayoutParams p = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
-        p.addRule(RelativeLayout.BELOW, R.id.result);
+        p.addRule(RelativeLayout.BELOW, R.id.ok);
         adView.setLayoutParams(p);
         layout.addView(adView,p);
         AdRequest request = new AdRequest();
