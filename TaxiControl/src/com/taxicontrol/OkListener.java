@@ -61,7 +61,7 @@ public class OkListener implements OnClickListener, OnKeyListener, OnCheckedChan
 			//multiplica las unidades por el valor por unidad
 			long result = units*Constants.pesosPorUnidad;
 			result = Math.round(result/100.0)*100;
-			return Long.toString(result);
+			return "Valor carrera: $"+result;
 		} catch (NumberFormatException e) {
 			return "Entrada Invalida";
 		}

@@ -13,12 +13,19 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@android:drawable/editbox_background"
-        android:layout_below="@id/label"/>
+        android:layout_below="@id/label"
+        android:inputType="phone"/>
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="000"
+        android:layout_below="@id/entry"/>
     <CheckBox android:id="@+id/festivo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="festivo" 
-        android:layout_below="@id/entry" />
+        android:layout_below="@id/result" />
     <CheckBox android:id="@+id/aeropuerto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -38,10 +45,5 @@
         android:layout_toLeftOf="@id/ok"
         android:layout_alignTop="@id/ok"
         android:text="Cancel" />
-    <TextView
-        android:id="@+id/result"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:layout_below="@id/ok"/>
+    
 </RelativeLayout>
