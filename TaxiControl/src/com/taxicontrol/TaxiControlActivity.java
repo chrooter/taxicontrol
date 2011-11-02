@@ -50,7 +50,7 @@ public class TaxiControlActivity extends Activity {
         listener.setAeropuerto(aeropuerto);
         //add listener
         button.setOnClickListener(listener);
-        editText.setOnKeyListener(listener);
+        editText.addTextChangedListener(listener);
         festivo.setOnCheckedChangeListener(listener);
         aeropuerto.setOnCheckedChangeListener(listener);
     }

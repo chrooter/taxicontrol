@@ -3,18 +3,18 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import android.content.Context;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnKeyListener;
-import android.view.View.OnTouchListener;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class OkListener implements OnClickListener, OnKeyListener, OnCheckedChangeListener {
+public class OkListener implements OnClickListener, TextWatcher, OnCheckedChangeListener {
 	Context context;
 	TextView textView;
 	EditText editText;
@@ -25,15 +25,7 @@ public class OkListener implements OnClickListener, OnKeyListener, OnCheckedChan
 		String text = editText.getText().toString();
 		String unitsOperated = operateUnits(text);
 		textView.setText(unitsOperated);
-	}
-
-	public boolean onKey(View v, int keyCode, KeyEvent event) {
-		String text = editText.getText().toString();
-		String unitsOperated = operateUnits(text);
-		textView.setText(unitsOperated);
-		return false;
-	}
-	
+	}	
 
 	public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
 		String text = editText.getText().toString();
@@ -99,6 +91,35 @@ public class OkListener implements OnClickListener, OnKeyListener, OnCheckedChan
 	
 	public void setAeropuerto(CheckBox aeropuerto) {
 		this.aeropuerto = aeropuerto;
+	}
+
+	public boolean onEditorAction(TextView arg0, int arg1, KeyEvent arg2) {
+		String text = editText.getText().toString();
+		String unitsOperated = operateUnits(text);
+		textView.setText(unitsOperated);
+		return false;
+	}
+
+	public boolean onKey(View v, int keyCode, KeyEvent event) {
+		String text = editText.getText().toString();
+		String unitsOperated = operateUnits(text);
+		textView.setText(unitsOperated);
+		return false;
+	}
+
+	public void afterTextChanged(Editable s) {
+		String text = editText.getText().toString();
+		String unitsOperated = operateUnits(text);
+		textView.setText(unitsOperated);
+	}
+
+	public void beforeTextChanged(CharSequence s, int start, int count,
+			int after) {
+		
+	}
+
+	public void onTextChanged(CharSequence s, int start, int before, int count) {
+		
 	}
 
 	
