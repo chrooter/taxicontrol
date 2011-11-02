@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
@@ -23,7 +21,6 @@ public class TaxiControlActivity extends Activity {
     	super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         //load items
-        final Button button = (Button)findViewById(R.id.ok);
         final TextView textView = (TextView)findViewById(R.id.result);
         final EditText editText = (EditText)findViewById(R.id.entry);
         final CheckBox festivo = (CheckBox)findViewById(R.id.festivo);
@@ -35,7 +32,7 @@ public class TaxiControlActivity extends Activity {
         RelativeLayout layout = (RelativeLayout)findViewById(R.id.mainLayout);
         RelativeLayout.LayoutParams p = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
-        p.addRule(RelativeLayout.BELOW, R.id.ok);
+        p.addRule(RelativeLayout.BELOW, R.id.festivo);
         adView.setLayoutParams(p);
         layout.addView(adView,p);
         AdRequest request = new AdRequest();
@@ -49,7 +46,6 @@ public class TaxiControlActivity extends Activity {
         listener.setFestivo(festivo);
         listener.setAeropuerto(aeropuerto);
         //add listener
-        button.setOnClickListener(listener);
         editText.addTextChangedListener(listener);
         festivo.setOnCheckedChangeListener(listener);
         aeropuerto.setOnCheckedChangeListener(listener);
