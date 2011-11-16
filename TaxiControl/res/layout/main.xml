@@ -7,7 +7,7 @@
         android:id="@+id/label"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Unidades:"/>
+        android:text="Unidades:" android:textSize="20sp"/>
     <EditText
         android:id="@+id/entry"
         android:layout_width="fill_parent"
@@ -20,17 +20,37 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="000"
-        android:layout_below="@id/entry"/>
+        android:layout_below="@id/entry" android:textSize="20sp"/>
     <CheckBox android:id="@+id/festivo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="festivo" 
-        android:layout_below="@id/result" />
+        android:text="FestONoct" 
+        android:layout_below="@id/result" 
+        android:enabled="false"/>
     <CheckBox android:id="@+id/aeropuerto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="aeropuerto" 
+        android:text="Aeropuerto" 
         android:layout_alignTop="@id/festivo"
         android:layout_toRightOf="@id/festivo" />
+    <CheckBox android:id="@+id/auto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Auto" 
+        android:layout_below="@id/festivo"
+        android:checked="true"/>
+    <CheckBox android:id="@+id/puertaapuerta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Puerta a puerta" 
+        android:layout_toRightOf="@id/auto"
+        android:layout_alignLeft="@id/aeropuerto"
+        android:layout_alignTop="@id/auto"/>
+    <CheckBox android:id="@+id/terminal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Terminal" 
+        android:layout_below="@id/auto"
+        />
     
 </RelativeLayout>

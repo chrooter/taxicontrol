@@ -25,14 +25,16 @@ public class TaxiControlActivity extends Activity {
         final EditText editText = (EditText)findViewById(R.id.entry);
         final CheckBox festivo = (CheckBox)findViewById(R.id.festivo);
         final CheckBox aeropuerto = (CheckBox)findViewById(R.id.aeropuerto);
-        
+        final CheckBox auto = (CheckBox)findViewById(R.id.auto);
+        final CheckBox terminal = (CheckBox)findViewById(R.id.terminal);
+        final CheckBox puertaapuerta = (CheckBox)findViewById(R.id.puertaapuerta);
         //ad
         adView = new AdView(this, AdSize.BANNER, "a14eaeb3d03c19a");
         
         RelativeLayout layout = (RelativeLayout)findViewById(R.id.mainLayout);
         RelativeLayout.LayoutParams p = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
-        p.addRule(RelativeLayout.BELOW, R.id.festivo);
+        p.addRule(RelativeLayout.BELOW, R.id.terminal);
         adView.setLayoutParams(p);
         layout.addView(adView,p);
         AdRequest request = new AdRequest();
@@ -45,10 +47,17 @@ public class TaxiControlActivity extends Activity {
         listener.setContext(context);
         listener.setFestivo(festivo);
         listener.setAeropuerto(aeropuerto);
+        listener.setAuto(auto);
+        listener.setPuertaapuerta(puertaapuerta);
+        listener.setTerminal(terminal);
+        listener.calcular();
         //add listener
         editText.addTextChangedListener(listener);
         festivo.setOnCheckedChangeListener(listener);
         aeropuerto.setOnCheckedChangeListener(listener);
+        auto.setOnCheckedChangeListener(listener);
+        terminal.setOnCheckedChangeListener(listener);
+        puertaapuerta.setOnCheckedChangeListener(listener);
     }
     
     
