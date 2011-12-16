@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class OkListener implements OnClickListener, TextWatcher, OnCheckedChangeListener {
+	
 	Context context;
 	TextView textView;
 	EditText editText;
@@ -24,6 +25,8 @@ public class OkListener implements OnClickListener, TextWatcher, OnCheckedChange
 	CheckBox auto;
 	CheckBox terminal;
 	CheckBox puertaapuerta;
+	CheckBox primaNav;
+	
 	static Hashtable<String, Hashtable<String, Hashtable<String, Boolean>>> festivos = new Hashtable<String, Hashtable<String,Hashtable<String,Boolean>>>();
 	
 	public OkListener() {
@@ -32,11 +35,16 @@ public class OkListener implements OnClickListener, TextWatcher, OnCheckedChange
 		Hashtable<String, Boolean> festivosNoviembre2011 = new Hashtable<String, Boolean>();
 		festivosNoviembre2011.put("14", true);
 		Hashtable<String, Boolean> festivosDiciembre2011 = new Hashtable<String, Boolean>();
-		festivosNoviembre2011.put("8", true);
+		festivosDiciembre2011.put("8", true);
 		Hashtable<String, Hashtable<String, Boolean>> festivos2011 = new Hashtable<String, Hashtable<String,Boolean>>();
 		festivos2011.put("11", festivosNoviembre2011);
 		festivos2011.put("12", festivosDiciembre2011);
 		festivos.put("2011",festivos2011);
+		Hashtable<String, Boolean> festivosEnero2012 = new Hashtable<String, Boolean>();
+		festivosEnero2012.put("9", true);
+		Hashtable<String, Hashtable<String, Boolean>> festivos2012 = new Hashtable<String, Hashtable<String,Boolean>>();
+		festivos2012.put("1", festivosEnero2012);
+		festivos.put("2012", festivos2012);
 	}
 	
 	public void calcular() {
@@ -78,6 +86,11 @@ public class OkListener implements OnClickListener, TextWatcher, OnCheckedChange
 			//multiplica las unidades por el valor por unidad
 			long result = units*Constants.pesosPorUnidad;
 			result = Math.round(result/100.0)*100;
+			
+			if (primaNav.isChecked()) {
+				result+=1000;
+			}
+			
 			if (isFestivoONocturno()) {
 				festivo.setChecked(true);
 			} else {
@@ -187,6 +200,14 @@ public class OkListener implements OnClickListener, TextWatcher, OnCheckedChange
 
 	public void setPuertaapuerta(CheckBox puertaapuerta) {
 		this.puertaapuerta = puertaapuerta;
+	}
+
+	public CheckBox getPrimaNav() {
+		return primaNav;
+	}
+
+	public void setPrimaNav(CheckBox primaNav) {
+		this.primaNav = primaNav;
 	}
 
 	
