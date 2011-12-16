@@ -52,5 +52,12 @@
         android:text="Terminal" 
         android:layout_below="@id/auto"
         />
+    <CheckBox android:id="@+id/prima"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Prima Navideña" 
+        android:layout_below="@id/auto"
+        android:layout_toRightOf="@id/terminal"
+        />
     
 </RelativeLayout>

@@ -28,6 +28,7 @@ public class TaxiControlActivity extends Activity {
         final CheckBox auto = (CheckBox)findViewById(R.id.auto);
         final CheckBox terminal = (CheckBox)findViewById(R.id.terminal);
         final CheckBox puertaapuerta = (CheckBox)findViewById(R.id.puertaapuerta);
+        final CheckBox primaNav = (CheckBox)findViewById(R.id.prima);
         //ad
         adView = new AdView(this, AdSize.BANNER, "a14eaeb3d03c19a");
         
@@ -35,11 +36,13 @@ public class TaxiControlActivity extends Activity {
         RelativeLayout.LayoutParams p = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
         p.addRule(RelativeLayout.BELOW, R.id.terminal);
+//        p.addRule(RelativeLayout.ALIGN_BASELINE);
         adView.setLayoutParams(p);
         layout.addView(adView,p);
         AdRequest request = new AdRequest();
 //        request.setTesting(true);
-        adView.loadAd(request);    
+        adView.loadAd(request); 
+        
         //create listener
         OkListener listener = new OkListener();
         listener.setTextView(textView);
@@ -50,6 +53,7 @@ public class TaxiControlActivity extends Activity {
         listener.setAuto(auto);
         listener.setPuertaapuerta(puertaapuerta);
         listener.setTerminal(terminal);
+        listener.setPrimaNav(primaNav);
         listener.calcular();
         //add listener
         editText.addTextChangedListener(listener);
@@ -58,6 +62,7 @@ public class TaxiControlActivity extends Activity {
         auto.setOnCheckedChangeListener(listener);
         terminal.setOnCheckedChangeListener(listener);
         puertaapuerta.setOnCheckedChangeListener(listener);
+        primaNav.setOnCheckedChangeListener(listener);
     }
     
     
