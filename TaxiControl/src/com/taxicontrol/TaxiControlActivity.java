@@ -3,7 +3,10 @@ package com.taxicontrol;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
@@ -28,7 +31,9 @@ public class TaxiControlActivity extends Activity {
         final CheckBox auto = (CheckBox)findViewById(R.id.auto);
         final CheckBox terminal = (CheckBox)findViewById(R.id.terminal);
         final CheckBox puertaapuerta = (CheckBox)findViewById(R.id.puertaapuerta);
-        final CheckBox primaNav = (CheckBox)findViewById(R.id.prima);
+        final Button mas = (Button)findViewById(R.id.mas);
+        final Button menos = (Button)findViewById(R.id.menos);
+//        final CheckBox primaNav = (CheckBox)findViewById(R.id.prima);
         //ad
         adView = new AdView(this, AdSize.BANNER, "a14eaeb3d03c19a");
         
@@ -53,7 +58,9 @@ public class TaxiControlActivity extends Activity {
         listener.setAuto(auto);
         listener.setPuertaapuerta(puertaapuerta);
         listener.setTerminal(terminal);
-        listener.setPrimaNav(primaNav);
+//        listener.setMas(mas);
+//        listener.setMenos(menos);
+//        listener.setPrimaNav(primaNav);
         listener.calcular();
         //add listener
         editText.addTextChangedListener(listener);
@@ -62,7 +69,25 @@ public class TaxiControlActivity extends Activity {
         auto.setOnCheckedChangeListener(listener);
         terminal.setOnCheckedChangeListener(listener);
         puertaapuerta.setOnCheckedChangeListener(listener);
-        primaNav.setOnCheckedChangeListener(listener);
+        menos.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				try {
+					editText.setText((Long.parseLong(editText.getText().toString())-1)+"");
+				} catch (Exception e) {
+					
+				}
+			}
+		});
+        mas.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				try {
+					editText.setText((Long.parseLong(editText.getText().toString())+1)+"");
+				} catch (Exception e) {
+					
+				}
+			}
+		});
+//        primaNav.setOnCheckedChangeListener(listener);
     }
     
     

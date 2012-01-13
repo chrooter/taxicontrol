@@ -9,6 +9,7 @@ import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
@@ -25,7 +26,9 @@ public class OkListener implements OnClickListener, TextWatcher, OnCheckedChange
 	CheckBox auto;
 	CheckBox terminal;
 	CheckBox puertaapuerta;
-	CheckBox primaNav;
+	Button mas;
+	Button menos;
+//	CheckBox primaNav;
 	
 	static Hashtable<String, Hashtable<String, Hashtable<String, Boolean>>> festivos = new Hashtable<String, Hashtable<String,Hashtable<String,Boolean>>>();
 	
@@ -87,9 +90,9 @@ public class OkListener implements OnClickListener, TextWatcher, OnCheckedChange
 			long result = units*Constants.pesosPorUnidad;
 			result = Math.round(result/100.0)*100;
 			
-			if (primaNav.isChecked()) {
-				result+=1000;
-			}
+//			if (primaNav.isChecked()) {
+//				result+=1000;
+//			}
 			
 			if (isFestivoONocturno()) {
 				festivo.setChecked(true);
@@ -201,14 +204,22 @@ public class OkListener implements OnClickListener, TextWatcher, OnCheckedChange
 	public void setPuertaapuerta(CheckBox puertaapuerta) {
 		this.puertaapuerta = puertaapuerta;
 	}
-
-	public CheckBox getPrimaNav() {
-		return primaNav;
+	
+	public void setMas (Button mas) {
+		this.mas = mas;
+	}
+	
+	public void setMenos (Button menos) {
+		this.menos = menos;
 	}
 
-	public void setPrimaNav(CheckBox primaNav) {
-		this.primaNav = primaNav;
-	}
+//	public CheckBox getPrimaNav() {
+//		return primaNav;
+//	}
+//
+//	public void setPrimaNav(CheckBox primaNav) {
+//		this.primaNav = primaNav;
+//	}
 
 	
 }
