@@ -2,4 +2,6 @@
 <resources>
     <string name="hello">Hello World, TaxiControlActivity!</string>
     <string name="app_name">TaxiControl</string>
+    <string name="plus1">+</string>
+    <string name="minus1">-</string>
 </resources>
