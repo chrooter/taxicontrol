@@ -35,18 +35,33 @@ public class OkListener implements OnClickListener, TextWatcher, OnCheckedChange
 	public OkListener() {
 		//actualiza festivos
 		festivos = new Hashtable<String, Hashtable<String,Hashtable<String,Boolean>>>();
-		Hashtable<String, Boolean> festivosNoviembre2011 = new Hashtable<String, Boolean>();
-		festivosNoviembre2011.put("14", true);
-		Hashtable<String, Boolean> festivosDiciembre2011 = new Hashtable<String, Boolean>();
-		festivosDiciembre2011.put("8", true);
-		Hashtable<String, Hashtable<String, Boolean>> festivos2011 = new Hashtable<String, Hashtable<String,Boolean>>();
-		festivos2011.put("11", festivosNoviembre2011);
-		festivos2011.put("12", festivosDiciembre2011);
-		festivos.put("2011",festivos2011);
-		Hashtable<String, Boolean> festivosEnero2012 = new Hashtable<String, Boolean>();
-		festivosEnero2012.put("9", true);
 		Hashtable<String, Hashtable<String, Boolean>> festivos2012 = new Hashtable<String, Hashtable<String,Boolean>>();
-		festivos2012.put("1", festivosEnero2012);
+		Hashtable<String, Boolean> festivosMayo2012 = new Hashtable<String, Boolean>();
+		festivosMayo2012.put("21", true);
+		festivos2012.put("5", festivosMayo2012);
+		Hashtable<String, Boolean> festivosJunio2012 = new Hashtable<String, Boolean>();
+		festivosJunio2012.put("11", true);
+		festivosJunio2012.put("18", true);
+		festivos2012.put("6", festivosJunio2012);
+		Hashtable<String, Boolean> festivosJulio2012 = new Hashtable<String, Boolean>();
+		festivosJulio2012.put("2", true);
+		festivosJulio2012.put("20", true);
+		festivos2012.put("7", festivosJulio2012);
+		Hashtable<String, Boolean> festivosAgosto2012 = new Hashtable<String, Boolean>();
+		festivosAgosto2012.put("7", true);
+		festivosAgosto2012.put("20", true);
+		festivos2012.put("8", festivosAgosto2012);
+		Hashtable<String, Boolean> festivosOctubre2012 = new Hashtable<String, Boolean>();
+		festivosOctubre2012.put("15", true);
+		festivos2012.put("10", festivosOctubre2012);
+		Hashtable<String, Boolean> festivosNoviembre2012 = new Hashtable<String, Boolean>();
+		festivosNoviembre2012.put("12", true);
+		festivosNoviembre2012.put("5", true);
+		festivos2012.put("11", festivosNoviembre2012);
+		Hashtable<String, Boolean> festivosDiciembre2012 = new Hashtable<String, Boolean>();
+		festivosDiciembre2012.put("8", true);
+		festivosDiciembre2012.put("25", true);
+		festivos2012.put("12", festivosDiciembre2012);
 		festivos.put("2012", festivos2012);
 	}
 	
