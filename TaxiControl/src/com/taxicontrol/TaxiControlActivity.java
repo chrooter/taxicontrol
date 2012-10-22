@@ -3,6 +3,9 @@ package com.taxicontrol;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -33,7 +36,7 @@ public class TaxiControlActivity extends Activity {
         final CheckBox puertaapuerta = (CheckBox)findViewById(R.id.puertaapuerta);
         final Button mas = (Button)findViewById(R.id.mas);
         final Button menos = (Button)findViewById(R.id.menos);
-//        final CheckBox primaNav = (CheckBox)findViewById(R.id.prima);
+//      final CheckBox primaNav = (CheckBox)findViewById(R.id.prima);
         //ad
         adView = new AdView(this, AdSize.BANNER, "a14eaeb3d03c19a");
         
@@ -41,11 +44,11 @@ public class TaxiControlActivity extends Activity {
         RelativeLayout.LayoutParams p = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
         p.addRule(RelativeLayout.BELOW, R.id.terminal);
-//        p.addRule(RelativeLayout.ALIGN_BASELINE);
+//      p.addRule(RelativeLayout.ALIGN_BASELINE);
         adView.setLayoutParams(p);
         layout.addView(adView,p);
         AdRequest request = new AdRequest();
-//        request.setTesting(true);
+//      request.setTesting(true);
         adView.loadAd(request); 
         
         //create listener
@@ -89,6 +92,24 @@ public class TaxiControlActivity extends Activity {
 		});
 //        primaNav.setOnCheckedChangeListener(listener);
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.game_menu, menu);
+        return true;
+    }
     
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.exit:
+            	//moves the application to the back
+                moveTaskToBack(true);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
     
 }

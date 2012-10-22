@@ -4,4 +4,6 @@
     <string name="app_name">TaxiControl</string>
     <string name="plus1">+</string>
     <string name="minus1">-</string>
+    <string name="Exit">Salir</string>
+    <string name="About">Acerca de</string>
 </resources>
