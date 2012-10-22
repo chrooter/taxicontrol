@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:text="FestONoct" 
         android:layout_below="@id/result" 
-        android:enabled="false"/>
+        android:state_enabled="false"/>
     <CheckBox android:id="@+id/aeropuerto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
