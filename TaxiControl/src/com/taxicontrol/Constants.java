@@ -1,7 +1,7 @@
 package com.taxicontrol;
 
 public class Constants {
-	public final static int pesosPorUnidad = 68;
+	public final static int pesosPorUnidad = 70;
 	public final static int carreraMinima = 50;
 	public final static int arranqueOBanderazo = 25;
 	public final static int recargoPuenteAereo = 50;
