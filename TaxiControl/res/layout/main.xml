@@ -61,6 +61,8 @@
     	android:layout_above="@+id/result" 
     	android:layout_alignRight="@+id/puertaapuerta" 
     	android:layout_width="wrap_content"
+    	android:minWidth="100dp"
+    	android:minHeight="100dp"
     	/>
     <Button android:id="@+id/menos" 
     	android:text="@string/minus1" 
@@ -69,5 +71,18 @@
     	android:layout_above="@+id/result" 
     	android:layout_toRightOf="@+id/mas" 
     	android:layout_width="wrap_content"
+    	android:minWidth="100dp"
+    	android:minHeight="100dp"
     	/>
+
+    <Button
+        android:id="@+id/llamar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/puertaapuerta"
+        android:layout_alignTop="@+id/terminal"
+        android:layout_marginTop="14dp"
+        android:layout_toLeftOf="@+id/menos"
+        android:text="@string/llamar" />
+
 </RelativeLayout>
