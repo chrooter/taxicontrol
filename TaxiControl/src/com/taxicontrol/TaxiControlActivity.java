@@ -1,8 +1,12 @@
 package com.taxicontrol;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -36,6 +40,7 @@ public class TaxiControlActivity extends Activity {
         final CheckBox puertaapuerta = (CheckBox)findViewById(R.id.puertaapuerta);
         final Button mas = (Button)findViewById(R.id.mas);
         final Button menos = (Button)findViewById(R.id.menos);
+        final Button llamar = (Button)findViewById(R.id.llamar);
 //      final CheckBox primaNav = (CheckBox)findViewById(R.id.prima);
         //ad
         adView = new AdView(this, AdSize.BANNER, "a14eaeb3d03c19a");
@@ -91,6 +96,14 @@ public class TaxiControlActivity extends Activity {
 			}
 		});
 //        primaNav.setOnCheckedChangeListener(listener);
+        
+        llamar.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+				call();
+				
+			}
+		});
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -112,4 +125,13 @@ public class TaxiControlActivity extends Activity {
         }
     }
     
+    public void call() {
+        try {
+            Intent callIntent = new Intent(Intent.ACTION_CALL);
+            callIntent.setData(Uri.parse("tel:0312222222"));
+            startActivity(callIntent);
+        } catch (ActivityNotFoundException activityException) {
+             Log.e("myphone dialer", "Call failed", activityException);
+        }
+    }
 }
