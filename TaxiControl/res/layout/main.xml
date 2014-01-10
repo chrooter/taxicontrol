@@ -18,10 +18,18 @@
         android:inputType="phone" android:layout_alignRight="@+id/aeropuerto"/>
     <TextView
         android:id="@+id/result"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="000"
         android:layout_below="@id/entry" android:textSize="20sp"/>
+
+    <Spinner
+        android:id="@+id/year"
+        android:layout_width="wrap_content"
+        android:layout_toRightOf="@id/result"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/result" />
+
     <CheckBox android:id="@+id/festivo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -84,5 +92,7 @@
         android:layout_marginTop="14dp"
         android:layout_toLeftOf="@+id/menos"
         android:text="@string/llamar" />
+
+    
 
 </RelativeLayout>

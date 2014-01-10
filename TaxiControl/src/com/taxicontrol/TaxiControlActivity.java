@@ -13,10 +13,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import com.google.ads.*;
 
@@ -41,7 +44,8 @@ public class TaxiControlActivity extends Activity {
         final Button mas = (Button)findViewById(R.id.mas);
         final Button menos = (Button)findViewById(R.id.menos);
         final Button llamar = (Button)findViewById(R.id.llamar);
-//      final CheckBox primaNav = (CheckBox)findViewById(R.id.prima);
+        final Spinner year = (Spinner)findViewById(R.id.year);
+
         //ad
         adView = new AdView(this, AdSize.BANNER, "a14eaeb3d03c19a");
         
@@ -55,9 +59,17 @@ public class TaxiControlActivity extends Activity {
         AdRequest request = new AdRequest();
 //      request.setTesting(true);
         adView.loadAd(request); 
+
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.years, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        year.setAdapter(adapter);
         
         //create listener
-        OkListener listener = new OkListener();
+        final OkListener listener = new OkListener();
         listener.setTextView(textView);
         listener.setEditText(editText);
         listener.setContext(context);
@@ -70,6 +82,23 @@ public class TaxiControlActivity extends Activity {
 //        listener.setMenos(menos);
 //        listener.setPrimaNav(primaNav);
         listener.calcular();
+        year.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+			public void onItemSelected(AdapterView<?> arg0, View arg1,
+					int arg2, long arg3) {
+				if (arg0.getSelectedItemPosition() == 0) {
+					Constants.pesosPorUnidad = 70;
+				} else {
+					Constants.pesosPorUnidad = 72;
+				}
+				listener.calcular();
+			}
+
+			public void onNothingSelected(AdapterView<?> arg0) {
+				
+			}
+        	
+		});
         //add listener
         editText.addTextChangedListener(listener);
         festivo.setOnCheckedChangeListener(listener);
