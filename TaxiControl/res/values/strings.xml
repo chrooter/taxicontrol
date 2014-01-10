@@ -7,4 +7,8 @@
     <string name="Exit">Salir</string>
     <string name="About">Acerca de</string>
     <string name="llamar">llamar</string>
+    <string-array name="years">
+        <item >2013</item>
+        <item >2014</item>
+    </string-array>
 </resources>
